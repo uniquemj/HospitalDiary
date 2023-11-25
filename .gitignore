@@ -1,3 +1,5 @@
 .env
 /static
 venv
+db.sqlite3
+/media
