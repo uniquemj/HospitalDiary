@@ -1,0 +1,61 @@
+{% extends 'main.html'%}
+
+{% block content%}
+<div class = "container mt-5">
+    <form method = "POST" class = "col-6 mx-auto card p-5 shadow-lg" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>SignUp as Doctor</h1>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{ message }}
+        </div>
+        {%endfor%}
+        {% endif %}
+        <div class="mb-3">
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">@</span>
+                <input type="text" class="form-control" name = "username" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+              </div>
+        </div>
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">First and Last name</span>
+                <input type="text" aria-label="First name" name = "first_name" class="form-control" placeholder = "First Name">
+                <input type="text" aria-label="Last name" name = "last_name" class="form-control" placeholder = "Last Name">
+            </div>
+        </div>
+        <div class = "mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name = "email" aria-describedby="emailHelp">
+        </div>
+        <div class = "mb-3">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload Profile Picture</label>
+                <input type="file" class="form-control" name = "profile" id="inputGroupFile01" required>
+              </div>
+        </div>
+        <div class = "mb-3">
+            <h4 class = "mb-2">Address</h4>
+            <div class="input-group mb-2">
+                <input type="text" aria-label="Line 1" name = "line1" class="form-control" placeholder = "Line 1">
+                <input type="text" aria-label="City" name = "city" class="form-control" placeholder = "City">
+            </div>
+            <div class="input-group mb-2">
+                <input type="text" aria-label="State" name = "state" class="form-control" placeholder = "State">
+                <input type="text" aria-label="Pincode" name = "pincode" class="form-control" placeholder = "Pincode">
+            </div>
+        </div>
+        <div class = "mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" name = "password" id="exampleInputPassword1">
+        </div>
+        <div class = "mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" name = "confirm_password" id="exampleInputPassword1">
+        </div>
+        <p>Already have Account? <a href = "{% url 'login'%}">Login</a></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock content%}
