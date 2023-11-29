@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+
+{% block content%}
+<div class = "container mt-5">
+    <form method = "POST" class = "col-6 mx-auto card p-5 shadow-lg" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Create Blog</h1>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{ message }}
+        </div>
+        {%endfor%}
+        {% endif %}
+        
+        <div class = "mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name = "title" id="title">
+        </div>
+        <div class = "mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" class="form-control" name = "image" id="image" required>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+            <select class="form-select" name = "category" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              
+              <option value="Mental Health">Mental Health</option>
+              <option value="Heart Disease">Heart Disease</option>
+              <option value="Covid19">Covid19</option>
+              <option value="Immunization">Immunization</option>
+              
+            </select>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Summary of blog" name = "summary" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Summary</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Write Content here . . ." name = "content" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Content</label>
+        </div>
+        <div class = "row mb-3">
+            <button name = "draft" value = "draft" class="col-4 me-3 btn btn-outline-primary button">Save as Draft</button>
+            <button type="submit" class="col-4 btn btn-success button">Upload</button>
+        </div>
+      </form>
+</div>
+{% endblock content%}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'base',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,7 @@ DATABASES = {
         'HOST':os.environ.get('DB_HOST'),
         'PORT':'3306'
     }
+
 }
 
 

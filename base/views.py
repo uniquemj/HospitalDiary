@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import *
+from blog.models import *
 # Create your views here.
 def login_page(request):
     if request.method == "POST":
@@ -121,6 +122,10 @@ def signup_patient(request):
 def Dashboard(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    print(request.user.role)
-    return render(request,'base/home.html')
+
+    blog = BlogPost.get_uploaded_post(request.user)
+    context = {
+        'blog' : blog
+    }
+    return render(request,'base/home.html',context)
 

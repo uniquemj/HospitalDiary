@@ -1,0 +1,53 @@
+{% extends 'main.html' %} 
+{% block content %}
+
+<div class="container d-flex mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Content</th>
+        <th scope="col">Upload</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in blog%} 
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>
+            <img
+                src="{{post.image.url}}"
+                class="card-img-top img-fluid"
+                alt="..."
+            />
+            </td>
+            <th>{{post.title}}</th>
+            <th>{{post.category}}</th>
+            <th>{{post.summary|truncatechars:15}}</th>
+            <th>{{post.content|truncatechars:15}}</th>
+            <td>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        {% if not post.is_draft %}
+                            <input class="form-check-input mt-0" type="checkbox" value="" name = "draft" aria-label="Checkbox for following text input" checked>
+                        {% else %}
+                            <input class="form-check-input mt-0" type="checkbox" name = "draft" value="" aria-label="Checkbox for following text input">
+                        {% endif %}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <button data-post = "{{post.id}}" data-action = "save" class = "btn btn-primary save-btn">Save</button>
+            </td>
+        </tr>
+        
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{% endblock content%}

@@ -27,5 +27,23 @@
             </div>
         </div>
     </div>
+    {% if request.user.role == "DOCTOR" %}
+    <div class = "container-fluid">
+        <div class = "row mx-auto">
+            <h2 class = " col-12 my-5 text-center">My Blog</h2>
+            {% for post in blog %}
+            <div class="card col-4 my-3 mx-5" style="width: 18rem;">
+                <img src="{{post.image.url}}" class="card-img-top mt-3 img-fluid" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{post.title}}</h5>
+                  <p class="card-text">{{post.summary|truncatechars:15}}{%if post.summary.length > 15%}...{%endif%}</p>
+                </div>
+            </div>
+            {%endfor%}
+          
+            
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock content%}
