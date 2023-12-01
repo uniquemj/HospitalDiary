@@ -1,0 +1,26 @@
+{%extends 'main.html'%}
+{% block content %}
+<div class = "container mx-auto my-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Doctors Name</th>
+                <th scope="col">Appointment Date</th>
+                <th scope="col">Appointment Start Time</th>
+                <th scope="col">Appointment End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>{{record.doctor.username}}</td>
+                <td>{{record.date_of_appointment}}</td>
+                <td>{{record.appointment_start_time}}</td>
+                <td>{{record.appointment_end_time}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href = "{% url 'dashboard'%}" class = "btn btn-success">Continue</a>
+</div>
+{% endblock content %}

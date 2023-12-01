@@ -1,0 +1,31 @@
+{% extends 'main.html'%}
+
+{% block content%}
+<div class = "container mt-5">
+    <form method = "POST" class = "col-6 mx-auto card p-5 shadow-lg">
+        {% csrf_token %}
+        <h1>Book Appointment</h1>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{ message }}
+        </div>
+        {%endfor%}
+        {% endif %}
+        <div class="mb-3">
+            <label for="required_speciality" class="form-label">Required Speciality</label>
+            <input type="text" class="form-control" id="required_speciality" name = "required_speciality" aria-describedby="speciality">
+        </div>
+        <div class="mb-3">
+            <label for="date_of_appointment" class="form-label">Date of Appointment</label>
+            <input type="date" class="form-control" id="date_of_appointment" name = "date_of_appointment" aria-describedby="speciality">
+        </div>
+        <div class="mb-3">
+            <label for="appointment_start_time" class="form-label">Appointment Time</label>
+            <input type="time" class="form-control" id="appointment_start_time" name = "appointment_start_time" aria-describedby="speciality">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Confirm</button>
+      </form>
+</div>
+{% endblock content%}

@@ -49,7 +49,7 @@ class Patient(User):
     class Meta:
         proxy = True
 
-    patient = PatientManager()
+    get_patient = PatientManager()
 
 class PatientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -65,7 +65,7 @@ class Doctor(User):
     class Meta:
         proxy = True
     
-    doctor = DoctorManager()
+    get_doctor = DoctorManager()
 
 class DoctorProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

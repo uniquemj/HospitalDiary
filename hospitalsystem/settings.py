@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'base',
     'blog',
+    'appointment',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +90,6 @@ DATABASES = {
         'HOST':os.environ.get('DB_HOST'),
         'PORT':'3306'
     }
-
 }
 
 
